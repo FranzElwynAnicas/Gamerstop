@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}GamerStop - News{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <!-- Additional styles specific to this page -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <style>
+        /* Ensure news items work properly */
+        .news-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+        }
+        
+        .news-item.active .news-content {
+            max-height: 500px; /* Adjust based on your content */
+            padding: 15px;
+        }
+        
+        .news-header .fa-chevron-down {
+            transition: transform 0.3s ease;
+            margin-left: auto; /* Push icon to the right */
+        }
+        
+        .news-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        .news-header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 15px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- News Section -->
+    <div class="news-container">
+        <div class="news-item">
+            <button class="news-header">
+                <img src="{% static 'images/news1.png' %}" alt="Game News">
+                <div class="news-summary">
+                    <h2>Inside Tides of Annihilation's withering and fantastical version of London</h2>
+                    <span>3H AGO</span>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="news-content">
+                <p>A different kind of fallen London. Discover the secrets behind this immersive world.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <button class="news-header">
+                <img src="{% static 'images/news2.png' %}" alt="Game News">
+                <div class="news-summary">
+                    <h2>Color, character, and combat: One hour hands-on with Wuchang: Fallen Feathers</h2>
+                    <span>3D AGO</span>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="news-content">
+                <p>We spent one hour playing Wuchang: Fallen Feathers, the upcoming Soulslike from Leenzee...</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <button class="news-header">
+                <img src="{% static 'images/news3.png' %}" alt="Game News">
+                <div class="news-summary">
+                    <h2>Future Games Show Spring Showcase 2025: Highlights and trailers from the show</h2>
+                    <span>4D AGO</span>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="news-content">
+                <p>Check out the most exciting trailers and reveals from the 2025 Spring Showcase.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const newsItems = document.querySelectorAll('.news-item');
+            
+            newsItems.forEach(item => {
+                const header = item.querySelector('.news-header');
+                
+                header.addEventListener('click', () => {
+                    // Toggle current item
+                    item.classList.toggle('active');
+                    
+                    // Optional: Close other items when opening one
+                    if (item.classList.contains('active')) {
+                        newsItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.classList.contains('active')) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

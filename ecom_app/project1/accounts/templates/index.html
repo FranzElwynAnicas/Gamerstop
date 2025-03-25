@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerStop - Home</title>
+    
+    <!-- Importing Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Linking CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="left-nav">
+                <h1 class="logo"><a href="{% url 'home' %}">GamerStop</a></h1>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'store' %}">Store</a></li>
+                        <li><a href="{% url 'freegames' %}">Games</a></li>
+                        <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right-nav">
+                {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Log Out</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn">Log In</a>
+                {% endif %}
+                <a href="#" class="btn download">Download</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Game Slider -->
+    <main>
+        <section class="game-slider">
+            <div class="slider-container">
+                <div class="game-item active">
+                    <img src="{% static 'images/Store.png' %}" alt="Store">
+                    <div class="game-info">
+                        <h2>Store</h2>
+                        <button class="explore-btn" onclick="window.location.href='{% url 'store' %}'">EXPLORE</button>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/Valorant.png' %}" alt="Valorant">
+                    <div class="game-info">
+                        <h2>Valorant</h2>
+                        <button class="explore-btn" onclick="window.location.href='{% url 'freegames' %}'">EXPLORE</button>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/Apex_Legends.png' %}" alt="Apex Legends">
+                    <div class="game-info">
+                        <h2>Apex Legends</h2>
+                        <button class="explore-btn" onclick="window.location.href='{% url 'freegames' %}'">EXPLORE</button>
+                    </div>
+                </div>
+                <div class="game-item active">
+                    <img src="{% static 'images/Genshin_Impactv2.png' %}" alt="Genshin Impact">
+                    <div class="game-info">
+                        <h2>Genshin Impact</h2>
+                        <button class="explore-btn" onclick="window.location.href='{% url 'freegames' %}'">EXPLORE</button>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/Overwatch_2.png' %}" alt="Overwatch 2">
+                    <div class="game-info">
+                        <h2>Overwatch 2</h2>
+                        <button class="explore-btn" onclick="window.location.href='{% url 'freegames' %}'">EXPLORE</button>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/Marvel_Rivals.png' %}" alt="Marvel Rivals">
+                    <div class="game-info">
+                        <h2>Marvel Rivals</h2>
+                        <button class="explore-btn" onclick="window.location.href='{% url 'freegames' %}'">EXPLORE</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </section>
+    </main>
+
+    <!-- JavaScript for Slider -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".game-item");
+
+        function changeSlide(n) {
+            slides[slideIndex].classList.remove("active");
+            slideIndex = (slideIndex + n + slides.length) % slides.length;
+            slides[slideIndex].classList.add("active");
+        }
+
+        // Auto-slide every 5 seconds
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+
+</body>
+</html>

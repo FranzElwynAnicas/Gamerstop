@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ByteCoven - Games{% endblock %}
+
+{% block content %}
+<style>
+    /* Ensure the games section appears below the header */
+.games {
+    padding-top: 150px; /* Adjust this value to match your header height */
+}
+
+/* Games List - Make 5 games in one row */
+.games-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Game Card */
+.game-card {
+    width: calc(20% - 20px); /* 5 games per row with spacing */
+    background: #000;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #f5dca8;
+}
+
+.game-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.game-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.game-card p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .game-card {
+        width: calc(33.33% - 20px); /* 3 games per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .game-card {
+        width: calc(50% - 20px); /* 2 games per row on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .game-card {
+        width: 100%; /* 1 game per row on very small screens */
+    }
+}
+
+/* ======================== */
+/* 🌟 Search Bar Styling 🌟 */
+/* ======================== */
+
+/* Centering the Search Bar */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Search Input Field */
+input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 2px solid #f5dca8;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* Category Filters */
+div label {
+    margin-right: 10px;
+    color: #f5dca8;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.2);
+}
+
+/* ======================== */
+/* 🌟 Search Button Styling 🌟 */
+/* ======================== */
+
+button {
+    background: #f5dca8;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+button:hover {
+    background: #c9ab76;
+}
+
+</style>
+
+
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="main-width">
+    </div>
+</section>
+
+<!-- Games Section -->
+<section class="games">
+    <div class="main-width">
+        
+        <!-- Search Bar -->
+        <form method="GET">
+            <input type="text" name="search" placeholder="Search for a game..." value="{{ request.GET.search }}">
+
+            <!-- Tags -->
+            <div>
+                {% for tag in available_tags %}
+                    <label>
+                        <input type="checkbox" name="tags" value="{{ tag }}" {% if tag in selected_tags %}checked{% endif %}>
+                        {{ tag|title }}
+                    </label>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Game Results -->
+        <div class="games-list">
+            {% for game in games %}
+                <div class="game-card">
+                    <a href="{% url 'game_detail' game.id %}">
+                        <img src="{{ game.thumbnail }}" alt="{{ game.title }}">
+                        <h3>{{ game.title }}</h3>
+                        <p>{{ game.genre }}</p>
+                    </a>
+                </div>
+            {% empty %}
+                <p>No games found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

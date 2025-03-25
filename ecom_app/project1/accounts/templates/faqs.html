@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ByteCoven - FAQ{% endblock %}
+
+{% block content %}
+<div style="font-family: 'Open Sans', sans-serif; background-color: #111; color: #fff; margin: 0; padding: 20px; min-height: 100vh;">
+    <!-- Main Content -->
+    <h1></h1>
+    <h1>ㅤ</h1>
+    <h2> </h2>
+    <h1></h1>
+<h1>ㅤ</h1>
+<h2> </h2>
+
+    <div style="margin: 50px auto; max-width: 800px; padding: 0 20px;">
+        <h1 style="font-size: 36px; text-align: center; color: #f5dca8; margin-bottom: 40px;">Frequently Asked Questions</h1>
+
+        <!-- FAQ Items -->
+        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
+            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
+                What is Gamerstop?
+                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
+                <p style="margin: 0; line-height: 1.6;">
+                    GamerStop is an online gaming e-commerce platform offering a wide range of digital games, exclusive content, and community features. It's designed for gamers who want to purchase, play, and interact with others on a dynamic platform.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
+            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
+                Are the games region-locked?
+                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
+                <p style="margin: 0; line-height: 1.6;">
+                    Some games may be region-locked based on the publisher's restrictions. Check the product description for details on any regional limitations.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
+            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
+                What should I do if I encounter a technical issue with a game?
+                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
+                <p style="margin: 0; line-height: 1.6;">
+                    If you experience technical issues, please check our support page for troubleshooting guides. If the issue persists, you can reach out to our support team by submitting a ticket or emailing us directly.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
+            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
+                Can I play games offline?
+                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
+                <p style="margin: 0; line-height: 1.6;">
+                    Some games support offline play, while others may require an internet connection for activation or updates. Check the game's system requirements and product description for more details.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
+            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
+                Are there any age restrictions for purchasing games?
+                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
+                <p style="margin: 0; line-height: 1.6;">
+                    Some games may have age restrictions based on their content (such as Mature-rated games). You will need to be of the legal age in your country to purchase these games.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
+            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
+                Is my personal information safe?
+                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+            </button>
+            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
+                <p style="margin: 0; line-height: 1.6;">
+                    Yes! We take your privacy seriously. Your personal and payment information is securely processed through encrypted channels to ensure your data remains safe.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(button) {
+            const panel = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+                button.style.backgroundColor = "#333";
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                panel.style.display = "block";
+                button.style.backgroundColor = "#444";
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} - Details{% endblock %}
+
+{% block content %}
+<style>
+    /* Centering the product detail container */
+    .product-detail-container {
+        display: flex;
+        align-items: center; /* Align content vertically */
+        justify-content: center; /* Center content horizontally */
+        gap: 50px; /* Space between image and text */
+        max-width: 80%; /* Control width */
+        margin: 50px auto; /* Centering */
+        background: #111; /* Dark theme background */
+        padding: 40px;
+        border-radius: 10px;
+    }
+
+    /* Image size increased */
+    .product-image img {
+        max-width: 450px; /* Make image bigger */
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Ensure text content is readable and centered */
+    .product-info {
+        max-width: 500px; /* Control width of text */
+        text-align: left;
+    }
+
+    .product-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .product-price {
+        font-size: 22px;
+        font-weight: bold;
+        color: #f5dca8;
+        margin: 10px 0;
+    }
+
+    .product-description {
+        font-size: 18px;
+        color: #ccc;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 5px;
+        background: #f5dca8;
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+        background: #fff;
+    }
+
+    /* Centering the entire page */
+    .page-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full screen height */
+    }
+</style>
+
+<div class="page-container">
+    <div class="product-detail-container">
+        <!-- Left Side: Image -->
+        <div class="product-image">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+
+        <!-- Right Side: Title, Price & Description -->
+        <div class="product-info">
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="product-price">₱{{ product.price }}</p>
+            <p class="product-description">{{ product.description }}</p>
+            <a href="{% url 'store' %}" class="btn">Back to Store</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
