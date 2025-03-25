@@ -138,4 +138,7 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
+def chatbot_view(request):
+    return render(request, 'chatbot.html')
+
 
