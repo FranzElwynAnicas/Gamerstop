@@ -1,200 +1,145 @@
-{% extends "base.html" %}
-{% load static %}
+    {% extends "base.html" %}
+    {% load static %}
 
-{% block title %}GamerStop - Store{% endblock %}
+    {% block title %}GamerStop - Store{% endblock %}
 
-{% block content %}
-<style>
-    .hero {
-        min-height: unset !important;
-        height: auto !important;
+    {% block content %}
+    <style>
+        /* Import Bebas Neue font */
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+        .hero {
+            min-height: unset !important;
+            height: auto !important;
+        }
+        /* ===== Store Page Styles ===== */
+
+    /* General Store Layout */
+    .store {
+        padding: 80px 40px 40px;
+        text-align: center;
+        margin-top: 100px; /* Push store section below header */
     }
-    /* ===== Store Page Styles ===== */
 
-/* General Store Layout */
-.store {
-    padding: 80px 40px 40px;
-    text-align: center;
-    margin-top: 100px; /* Push store section below header */
-}
+    .store h2 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
 
-.store h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
-    margin-bottom: 30px;
-}
-
-/* ===== Product Grid ===== */
-.products {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columns */
-    gap: 20px;
-}
-
-/* Product Card */
-.product-card {
-    background: #000;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    position: relative;
-    border: 2px solid #f5dca8;
-}
-
-.product-card:hover {
-    transform: scale(1.05);
-}
-
-.product-card img {
-    width: 100%;
-    border-radius: 10px;
-    height: auto;
-}
-
-.product-card h3 {
-    font-size: 20px;
-    margin-top: 12px;
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-.product-card .btn {
-    margin-top: 12px;
-    display: inline-block;
-    padding: 10px 22px;
-    background: #f5dca8;
-    color: #111;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.product-card .btn:hover {
-    background: #fff;
-    transform: scale(1.05);
-}
-
-/* ===== Discover Something New Section ===== */
-.discover {
-    text-align: center;
-    margin: 50px auto;
-    max-width: 1200px;
-}
-
-.discover h2 {
-    font-size: 30px;
-    font-family: 'Bebas Neue', sans-serif;
-    margin-bottom: 20px;
-}
-
-.discover-grid {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    overflow-x: auto;
-    padding: 10px;
-}
-
-.discover-card {
-    background: #111;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    min-width: 200px;
-    flex-shrink: 0;
-}
-
-.discover-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.discover-card h3 {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.discover-card .price {
-    font-size: 16px;
-    color: #f5dca8;
-}
-
-/* ===== Search Bar Styling ===== */
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px; 
-}
-
-.search-bar {
-    width: 50%;
-    max-width: 600px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #000; 
-}
-
-.search-bar form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.search-bar input {
-    padding: 8px;
-    width: 70%;
-    border: 1px solid #f5dca8;
-    border-radius: 5px;
-    font-size: 16px;
-    background: #000;
-    color: white;
-}
-
-.search-bar button {
-    padding: 8px 20px;
-    border: 1px solid #f5dca8;
-    border-radius: 30px;
-    color: #fff;
-    background: transparent;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.search-bar button:hover {
-    background: #fff;
-    color: #000;
-}
-
-/* ===== Responsive Design for Store ===== */
-@media (max-width: 1024px) {
+    /* ===== Product Grid ===== */
     .products {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
-    }
-}
-
-@media (max-width: 768px) 
-    .products {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* 5 columns */
+        gap: 20px;
     }
 
+    /* Product Card */
+    .product-card {
+        background: #000;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease;
+        position: relative;
+        border: 2px solid #fff
+
+    }
+
+    .product-card:hover {
+        transform: scale(1.05);
+    }
+
+    .product-card img {
+        width: 100%;
+        border-radius: 10px;
+        height: auto;
+    }
+
+    .product-card h3 {
+        font-size: 20px;
+        margin-top: 12px;
+        font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .product-card .btn {
+        margin-top: 12px;
+        display: inline-block;
+        padding: 10px 22px;
+        background: #f5dca8;
+        color: #111;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .product-card .btn:hover {
+        background: #fff;
+        transform: scale(1.05);
+    }
+
+    /* ===== Discover Something New Section ===== */
+    .discover {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items horizontally */
+        justify-content: center; /* Center items vertically */
+        text-align: center;
+        width: 100%;
+    }
+    
+
+    .discover h2 {
+        font-size: 30px;
+        font-family: 'Bebas Neue', sans-serif;
+        margin-bottom: 20px;
+        text-align: center; /* This will center the text */
+        width: 100%; /* Make sure the title takes up the full width of its container */
+        display: flex;
+        justify-content: center; /* Centering the text inside the container */
+        margin-left: 0; /* Remove default left margin */
+        margin-right: 0; /* Remove default right margin */
+    }
+    
     .discover-grid {
-        flex-direction: row;
-        overflow-x: scroll;
+        display: flex;
+        justify-content: center; /* Center items horizontally */
+        gap: 15px;
+        overflow-x: auto;
         padding: 10px;
+        width: 100%; /* Ensure grid fills the available width */
+        max-width: 1200px; /* Max width for larger screens */
+        margin: 0 auto; /* Ensure grid is centered */
     }
 
-    .search-bar {
-        width: 90%;
+    .discover-card {
+        background: #111;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 200px;
+        flex-shrink: 0;
     }
 
-    /* Ensure search bar is positioned correctly */
+    .discover-card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    
+
+    .discover-card h3 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .discover-card .price {
+        font-size: 16px;
+        color: #f5dca8;
+    }
+
+    /* ===== Search Bar Styling ===== */
     .search-container {
         display: flex;
         justify-content: center;
@@ -238,115 +183,219 @@
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
+
     .search-bar button:hover {
         background: #fff;
         color: #000;
     }
 
-    /* Center "Discover Something New" Section */
-    .discover {
-        text-align: center; 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
+    /* ===== Responsive Design for Store ===== */
+    @media (max-width: 1024px) {
+        .products {
+            grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+        }
     }
 
-    .discover-grid {
-        display: flex;
-        justify-content: center; /* Center items horizontally */
-        flex-wrap: nowrap; /* Prevent wrapping */
-        gap: 20px; /* Space between items */
-        max-width: 1200px;
-        overflow-x: auto; /* Allow horizontal scrolling */
-        padding: 10px;
-    }
+    @media (max-width: 768px) 
+        .products {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+        }
 
-    /* Ensure product grid in store has 5 columns */
-    .products {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr); /* 5 columns */
-        gap: 20px; /* Space between products */
-        justify-content: center;
-    }
-    .discover-card {
-        flex: 0 0 200px; /* Set width for each card */
-        text-align: center;
-        background-color: #111; /* Keep the dark theme */
-        padding: 10px;
-        border-radius: 8px;
-    }
+        .discover-grid {
+            flex-direction: row;
+            overflow-x: scroll;
+            padding: 10px;
+        }
 
-    .discover-card img {
-        width: 150px; /* Limit image size */
-        height: auto;
-        object-fit: contain;
-    }
+        .search-bar {
+            width: 90%;
+        }
 
-    .product-card, {
-        text-align: center; /* Center text inside cards */
-    }
-    a {
-        text-decoration: none; /* Removes underline */
-        color: inherit; /* Makes text inherit the normal text color */
-    }
+        /* Ensure search bar is positioned correctly */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px; 
+        }
+
+        .search-bar {
+            width: 50%;
+            max-width: 600px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #000; 
+        }
+
+        .search-bar form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            width: 70%;
+            border: 1px solid #f5dca8;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #000;
+            color: white;
+        }
+
+        .search-bar button {
+            padding: 8px 20px;
+            border: 1px solid #f5dca8;
+            border-radius: 30px;
+            color: #fff;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Center "Discover Something New" Section */
+        .discover {
+            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .discover-grid {
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            flex-wrap: nowrap; /* Prevent wrapping */
+            gap: 20px; /* Space between items */
+            max-width: 1200px;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            padding: 10px;
+        }
+
+        /* Ensure product grid in store has 5 columns */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 columns */
+            gap: 20px; /* Space between products */
+            justify-content: center;
+        }
+        .discover-card {
+            flex: 0 0 200px; /* Set width for each card */
+            text-align: center;
+            background-color: #111; /* Keep the dark theme */
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .discover-card img {
+            width: 150px; /* Limit image size */
+            height: auto;
+            object-fit: contain;
+        }
+
+        .product-card, {
+            text-align: center; /* Center text inside cards */
+        }
+        a {
+            text-decoration: none; /* Removes underline */
+            color: inherit; /* Makes text inherit the normal text color */
+        }
+        
+        /* Optional: Style when hovering */
+        a:hover {
+            color: #f5dca8; /* Change to any color you want */
+        }
+
+        .cart-btn {
+            padding: 10px 25px;
+            border: 1.5px solid #fff;
+            border-radius: 8px;
+            color: #fff;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 20px 40px;
+            text-align: right;
+            float: right;
+        }
     
-    /* Optional: Style when hovering */
-    a:hover {
-        color: #f5dca8; /* Change to any color you want */
-    }
+        .cart-btn:hover {
+            background: #FFFFFF;            ;
+            color: #000;
+        }
 
-</style>
+    </style>
 
-<!-- Force a clear separation from navbar -->
-<div style="height: 80px;"></div>  
+    <!-- Force a clear separation from navbar -->
+    <div style="height: 80px;"></div>  
 
-{% comment %} <!-- Search Bar -->
-<div class="search-container">
-    <section class="search-bar">
-        <form method="GET" action="{% url 'store' %}">
-            <input type="text" name="q" placeholder="Search products..." value="{{ request.GET.q }}">
-            <button type="submit">Search</button>
-        </form>
+    {% comment %} <!-- Search Bar -->
+    <div class="search-container">
+        <section class="search-bar">
+            <form method="GET" action="{% url 'store' %}">
+                <input type="text" name="q" placeholder="Search products..." value="{{ request.GET.q }}">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+    </div> {% endcomment %}
+    <!-- View Cart Button -->
+   <div style="text-align: right; margin: 20px 40px;">
+    <div style="text-align: right; margin: 20px 40px;">
+        <a href="{% url 'cart' %}" class="btn cart-btn" style="padding: 10px 25px; border: 1.5px solid #fff; border-radius: 8px; color: #fff; background: transparent; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+            🛒 View Cart
+        </a>
+    </div>
+    </a>
+</div>
+    <!-- Discover Something New Section -->
+    <section class="discover">
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <h2>DISCOVER SOMETHING NEW</h2>
+        </div>        
+        <div class="discover-grid">
+            {% for product in random_products %}
+            <div class="discover-card">
+                <a href="{% url 'product_detail' product.id %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <p class="game-category">Base Game</p>
+                    <h3>{{ product.name }}</h3>
+                    <p class="price">₱{{ product.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </section>
-</div> {% endcomment %}
-<h1></h1>
-<h1>ㅤ</h1>
-<h2> </h2>
-<!-- Discover Something New Section -->
-<section class="discover">
-    <h2>Discover Something New</h2>
-    <div class="discover-grid">
-        {% for product in random_products %}
-        <div class="discover-card">
-            <a href="{% url 'product_detail' product.id %}">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                <p class="game-category">Base Game</p>
-                <h3>{{ product.name }}</h3>
+
+    <!-- Store Products Section -->
+    <section class="store">
+        <h2>Official Merchandise</h2>
+  
+        </a>
+    </div>
+        <div class="products">
+            {% for product in products %}
+            <div class="product-card">
+                <a href="{% url 'product_detail' product.id %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <h3>{{ product.name }}</h3>
+                </a>
                 <p class="price">₱{{ product.price }}</p>
-            </a>
+                <a href="{% url 'product_detail' product.id %}" class="btn">View Details</a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-</section>
-
-<!-- Store Products Section -->
-<section class="store">
-    <h2>Store</h2>
-    <div class="products">
-        {% for product in products %}
-        <div class="product-card">
-            <a href="{% url 'product_detail' product.id %}">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                <h3>{{ product.name }}</h3>
-            </a>
-            <p class="price">₱{{ product.price }}</p>
-            <a href="{% url 'product_detail' product.id %}" class="btn">View Details</a>
-        </div>
-        {% endfor %}
-    </div>
-</section>
+    </section>
 
 
-{% endblock %}
+    {% endblock %}

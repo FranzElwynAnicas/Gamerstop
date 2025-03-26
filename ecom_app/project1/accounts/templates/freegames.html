@@ -1,31 +1,31 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% load static %}
 
-{% block title %}ByteCoven - Games{% endblock %}
+{% block title %}GamerStop - Games{% endblock %}
 
 {% block content %}
 <style>
-    /* Ensure the games section appears below the header */
+
 .games {
-    padding-top: 150px; /* Adjust this value to match your header height */
+    padding-top: 150px; 
 }
 
-/* Games List - Make 5 games in one row */
 .games-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px; 
 }
 
-/* Game Card */
 .game-card {
-    width: calc(20% - 20px); /* 5 games per row with spacing */
+    width: calc(20% - 30px); 
     background: #000;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 12px;
     text-align: center;
-    border: 2px solid #f5dca8;
+    border: 2px solid #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .game-card img {
@@ -34,54 +34,65 @@
 }
 
 .game-card h3 {
-    font-size: 18px;
-    margin: 10px 0;
+    font-size: 22px;
+    margin: 12px 0;
     font-family: 'Bebas Neue', sans-serif;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.game-card a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .game-card p {
-    font-size: 14px;
+    font-size: 16px;
     color: #ccc;
+    text-decoration: underline;
+    text-decoration-color: #fff;
 }
 
-/* Responsive Design */
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.game-card:hover h3 {
+    color: #555;
+}
+
 @media (max-width: 1024px) {
     .game-card {
-        width: calc(33.33% - 20px); /* 3 games per row on medium screens */
+        width: calc(33.33% - 30px);
     }
 }
 
 @media (max-width: 768px) {
     .game-card {
-        width: calc(50% - 20px); /* 2 games per row on small screens */
+        width: calc(50% - 30px);
     }
 }
 
 @media (max-width: 480px) {
     .game-card {
-        width: 100%; /* 1 game per row on very small screens */
+        width: 100%;
     }
 }
 
-/* ======================== */
-/* 🌟 Search Bar Styling 🌟 */
-/* ======================== */
-
-/* Centering the Search Bar */
-form {
+.search-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
     justify-content: center;
     align-items: center;
+    gap: 15px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
-/* Search Input Field */
 input[type="text"] {
     width: 300px;
     padding: 10px;
-    border: 2px solid #f5dca8;
+    border: 2px solid #fff;
     border-radius: 5px;
     background: #222;
     color: #fff;
@@ -89,76 +100,75 @@ input[type="text"] {
     text-align: center;
 }
 
-input[type="text"]::placeholder {
-    color: #aaa;
-}
-
-/* Category Filters */
-div label {
-    margin-right: 10px;
-    color: #f5dca8;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-input[type="checkbox"] {
-    margin-right: 5px;
-    transform: scale(1.2);
-}
-
-/* ======================== */
-/* 🌟 Search Button Styling 🌟 */
-/* ======================== */
-
-button {
-    background: #f5dca8;
-    color: #000;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+select {
+    padding: 10px;
     border-radius: 5px;
-    transition: 0.3s;
+    background: #fff;
+    color: #000;
+    font-size: 16px;
 }
-
-/* Hover Effect */
-button:hover {
-    background: #c9ab76;
-}
-
 </style>
 
-
-
-<!-- Hero Section -->
-<section class="hero">
-    <div class="main-width">
-    </div>
-</section>
-
-<!-- Games Section -->
 <section class="games">
     <div class="main-width">
         
-        <!-- Search Bar -->
-        <form method="GET">
-            <input type="text" name="search" placeholder="Search for a game..." value="{{ request.GET.search }}">
-
-            <!-- Tags -->
-            <div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for a game...">
+            
+            <select id="tagSelect">
+                <option value="">All Tags</option>
                 {% for tag in available_tags %}
-                    <label>
-                        <input type="checkbox" name="tags" value="{{ tag }}" {% if tag in selected_tags %}checked{% endif %}>
-                        {{ tag|title }}
-                    </label>
+                    <option value="{{ tag }}">{{ tag|title }}</option>
+                {% empty %}
+                    <option value="mmorpg">MMORPG</option>
+                    <option value="shooter">Shooter</option>
+                    <option value="strategy">Strategy</option>
+                    <option value="moba">MOBA</option>
+                    <option value="racing">Racing</option>
+                    <option value="sports">Sports</option>
+                    <option value="social">Social</option>
+                    <option value="sandbox">Sandbox</option>
+                    <option value="open-world">Open World</option>
+                    <option value="survival">Survival</option>
+                    <option value="pvp">PvP</option>
+                    <option value="pve">PvE</option>
+                    <option value="pixel">Pixel</option>
+                    <option value="voxel">Voxel</option>
+                    <option value="zombie">Zombie</option>
+                    <option value="turn-based">Turn-Based</option>
+                    <option value="first-person">First-Person</option>
+                    <option value="third-person">Third-Person</option>
+                    <option value="top-down">Top-Down</option>
+                    <option value="tank">Tank</option>
+                    <option value="space">Space</option>
+                    <option value="sailing">Sailing</option>
+                    <option value="side-scroller">Side-Scroller</option>
+                    <option value="superhero">Superhero</option>
+                    <option value="permadeath">Permadeath</option>
+                    <option value="card">Card</option>
+                    <option value="battle-royale">Battle Royale</option>
+                    <option value="mmo">MMO</option>
+                    <option value="mmofps">MMOFPS</option>
+                    <option value="mmotps">MMOTPS</option>
+                    <option value="3d">3D</option>
+                    <option value="2d">2D</option>
+                    <option value="anime">Anime</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="action-rpg">Action RPG</option>
+                    <option value="action">Action</option>
+                    <option value="military">Military</option>
+                    <option value="martial-arts">Martial Arts</option>
+                    <option value="flight">Flight</option>
+                    <option value="low-spec">Low Spec</option>
+                    <option value="tower-defense">Tower Defense</option>
+                    <option value="horror">Horror</option>
+                    <option value="mmorts">MMORTS</option>
                 {% endfor %}
-            </div>
-
-            <button type="submit">Search</button>
-        </form>
-
-        <!-- Game Results -->
+            </select>
+        </div>
+        
         <div class="games-list">
             {% for game in games %}
                 <div class="game-card">
@@ -174,5 +184,31 @@ button:hover {
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput");
+    const tagSelect = document.getElementById("tagSelect");
+    const gameCards = document.querySelectorAll(".game-card");
+
+    function filterGames() {
+        const searchText = searchInput.value.toLowerCase();
+        const selectedTag = tagSelect.value.toLowerCase();
+
+        gameCards.forEach(game => {
+            const title = game.querySelector("h3").textContent.toLowerCase();
+            const genre = game.querySelector("p").textContent.toLowerCase();
+
+            const matchesSearch = title.includes(searchText);
+            const matchesTag = selectedTag === "" || genre.includes(selectedTag);
+
+            game.style.display = matchesSearch && matchesTag ? "block" : "none";
+        });
+    }
+
+    searchInput.addEventListener("input", filterGames);
+    tagSelect.addEventListener("change", filterGames);
+});
+</script>
 
 {% endblock %}

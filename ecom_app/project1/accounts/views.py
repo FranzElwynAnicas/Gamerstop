@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .models import Product
+from accounts.models import Cart
 import requests
 import random
 
@@ -46,10 +47,6 @@ def login_view(request):
 
     return render(request, "login.html") 
 
-def logout_view(request):
-    logout(request)
-    return redirect('index')
-
 @login_required
 def home(request):
     return render(request, 'home.html')
@@ -84,7 +81,6 @@ def games(request):
     search_query = request.GET.get('search', '')
     selected_tags = request.GET.getlist('tags')  # Get selected categories
 
-    # Define available tags based on FreeToGame API
     available_tags = [
         "mmorpg", "shooter", "strategy", "moba", "racing", "sports", "social", "sandbox",
         "open-world", "survival", "pvp", "pve", "pixel", "voxel", "zombie", "turn-based",
@@ -94,18 +90,15 @@ def games(request):
         "martial-arts", "flight", "low-spec", "tower-defense", "horror", "mmorts"
     ]
 
-    # Base URL for fetching games
     url = API_URL
 
-    # If category is selected, modify the API request URL
     if selected_tags:
         url = f"{API_URL}?category={','.join(selected_tags)}"
 
-    # Fetch game data
     response = requests.get(url)
     games = response.json() if response.status_code == 200 else []
 
-    # Filter games by search query
+
     if search_query:
         games = [game for game in games if search_query.lower() in game["title"].lower()]
 
@@ -117,14 +110,14 @@ def games(request):
 
 @login_required
 def game_detail(request, game_id):
-    # Fetch game data from the FreeToGame API using the correct URL format
+
     url = f"https://www.freetogame.com/api/game?id={game_id}"
     response = requests.get(url)
 
     if response.status_code == 200:
         game = response.json()
     else:
-        game = None  # Handle the case where the game is not found
+        game = None  
     
     return render(request, "game_detail.html", {'game': game})
 @login_required
@@ -140,5 +133,37 @@ def logout_view(request):
 
 def chatbot_view(request):
     return render(request, 'chatbot.html')
+
+@login_required
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart_item, created = Cart.objects.get_or_create(user=request.user, product=product)
+    
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
+    messages.success(request, f"{product.name} added to cart!")
+    return render(request, "addtocart.html", {'product': product, 'cart_item': cart_item})
+
+@login_required
+def cart_view(request):
+    cart_items = Cart.objects.filter(user=request.user)  # Get logged-in user's cart
+    total_price = sum(item.product.price * item.quantity for item in cart_items)  # Calculate total price
+
+    context = {
+        'cart_items': cart_items,
+        'total_price': total_price
+    }
+    return render(request, 'cart.html', context)
+
+@login_required
+def remove_from_cart(request, item_id):
+    cart_item = get_object_or_404(Cart, id=item_id, user=request.user)
+    cart_item.delete()
+    messages.success(request, "Item removed from cart.")
+    return redirect('cart')
+
+
 
 

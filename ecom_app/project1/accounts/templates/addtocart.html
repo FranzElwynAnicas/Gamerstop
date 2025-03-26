@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <style>
+        /* Import Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom, #000, #000);
+            color: #fff;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            width: 80%;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        /* Product Info */
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product img {
+            width: 250px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product h2 {
+            font-size: 24px;
+            font-family: 'Bebas Neue', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* Button Container */
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Add to Cart Button */
+        .add-to-cart {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .add-to-cart:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Back to Store Button */
+        .back-to-store {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid #f5dca8;
+            background: transparent;
+            color: #f5dca8;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-store:hover {
+            background: #f5dca8;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Price styling */
+        .price {
+            color: #f5dca8;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .product img {
+                width: 200px;
+            }
+
+            .product h2 {
+                font-size: 20px;
+            }
+
+            .add-to-cart, .back-to-store {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="product">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p class="price">${{ product.price }}</p>
+            
+            <div class="button-container">
+                <!-- Add to Cart Form - will redirect back to this page after submission -->
+                <form action="{% url 'add_to_cart_page' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button type="submit" class="add-to-cart">Add to Cart</button>
+                </form>
+                
+                <!-- Back to Store Button -->
+                <a href="{% url 'store' %}" class="back-to-store">Back to Store</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,9 +1,19 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Chatbot</title>
+    <title>My Chatbot Page</title>
+    <!-- Add the Dialogflow Messenger script -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 </head>
 <body>
-    <h1>Welcome to Our Chatbot</h1>
-    <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/a81af24f-c527-4820-8927-73220e8eb017"></iframe>
+    <!-- Your page content here -->
+    
+    <!-- Dialogflow Messenger element -->
+    <df-messenger
+        intent="WELCOME"
+        chat-title="SierraBot"
+        agent-id="a81af24f-c527-4820-8927-73220e8eb017"
+        language-code="en"
+    ></df-messenger>
 </body>
 </html>

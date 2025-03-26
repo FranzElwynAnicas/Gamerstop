@@ -15,5 +15,8 @@ urlpatterns = [
     path('faq/', views.faq_view, name='faq'),
     path('news/', views.news_view, name='news'),
     path('chatbot/', views.chatbot_view, name='chatbot'),
+    path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart_page'),
+    path('cart/', views.cart_view, name='cart'),
+    path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
 
 ]

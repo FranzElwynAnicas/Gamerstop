@@ -3,29 +3,32 @@
 
 {% block content %}
 <style>
+    /* Import Bebas Neue font */
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    
     /* Centering the product detail container */
     .product-detail-container {
         display: flex;
-        align-items: center; /* Align content vertically */
-        justify-content: center; /* Center content horizontally */
-        gap: 50px; /* Space between image and text */
-        max-width: 80%; /* Control width */
-        margin: 50px auto; /* Centering */
-        background: #111; /* Dark theme background */
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        max-width: 80%;
+        margin: 50px auto;
+        background: #111;
         padding: 40px;
         border-radius: 10px;
     }
 
     /* Image size increased */
     .product-image img {
-        max-width: 450px; /* Make image bigger */
+        max-width: 450px;
         height: auto;
         border-radius: 10px;
     }
 
     /* Ensure text content is readable and centered */
     .product-info {
-        max-width: 500px; /* Control width of text */
+        max-width: 500px;
         text-align: left;
     }
 
@@ -48,6 +51,7 @@
         margin-bottom: 20px;
     }
 
+    /* Unified button styling */
     .btn {
         display: inline-block;
         padding: 12px 24px;
@@ -56,11 +60,24 @@
         color: #000;
         font-weight: bold;
         text-decoration: none;
-        transition: background 0.3s ease;
+        transition: all 0.3s ease;
+        margin-right: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
     }
 
     .btn:hover {
         background: #fff;
+        transform: scale(1.05);
+    }
+
+    /* Button container for better spacing */
+    .button-container {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
     }
 
     /* Centering the entire page */
@@ -68,7 +85,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; /* Full screen height */
+        min-height: 100vh;
+        padding: 20px;
     }
 </style>
 
@@ -84,7 +102,21 @@
             <h1 class="product-title">{{ product.name }}</h1>
             <p class="product-price">₱{{ product.price }}</p>
             <p class="product-description">{{ product.description }}</p>
-            <a href="{% url 'store' %}" class="btn">Back to Store</a>
+
+            <!-- Button Container -->
+            <div class="button-container">
+                <!-- Add to Cart Button -->
+                <form action="{% url 'add_to_cart_page' product.id %}" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Add to Cart</button>
+                </form>
+
+                <!-- View Cart Button -->
+                <a href="{% url 'cart' %}" class="btn">View Cart</a>
+
+                <!-- Back to Store Button - now matches the same style -->
+                <a href="{% url 'store' %}" class="btn">Back to Store</a>
+            </div>
         </div>
     </div>
 </div>

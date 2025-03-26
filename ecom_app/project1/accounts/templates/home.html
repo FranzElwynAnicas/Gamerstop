@@ -112,5 +112,20 @@
         setInterval(() => changeSlide(1), 5000);
     </script>
 
-</body>
-</html>
+    <!-- Dialogflow Messenger (Chatbot) -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    
+    <df-messenger
+        intent="WELCOME"
+        chat-title="SierraBot"
+        agent-id="a81af24f-c527-4820-8927-73220e8eb017"
+        language-code="en"
+        style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; 
+               --df-messenger-bot-message: #1e1e1e; 
+               --df-messenger-button-titlebar-color: #f5dca8;
+               --df-messenger-chat-background: #000;
+               --df-messenger-font-color: white;">
+    </df-messenger>
+
+</body> 
+</html>  

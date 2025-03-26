@@ -1,112 +1,76 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}ByteCoven - FAQ{% endblock %}
+{% block title %}GamerStop - FAQ{% endblock %}
 
 {% block content %}
-<div style="font-family: 'Open Sans', sans-serif; background-color: #111; color: #fff; margin: 0; padding: 20px; min-height: 100vh;">
-    <!-- Main Content -->
-    <h1></h1>
-    <h1>ㅤ</h1>
-    <h2> </h2>
-    <h1></h1>
-<h1>ㅤ</h1>
-<h2> </h2>
-
-    <div style="margin: 50px auto; max-width: 800px; padding: 0 20px;">
-        <h1 style="font-size: 36px; text-align: center; color: #f5dca8; margin-bottom: 40px;">Frequently Asked Questions</h1>
-
-        <!-- FAQ Items -->
-        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
-            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
-                What is Gamerstop?
-                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
-            </button>
-            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
-                <p style="margin: 0; line-height: 1.6;">
-                    GamerStop is an online gaming e-commerce platform offering a wide range of digital games, exclusive content, and community features. It's designed for gamers who want to purchase, play, and interact with others on a dynamic platform.
-                </p>
-            </div>
+<section style="font-family: 'Open Sans', sans-serif; background-color: #111; color: #fff; margin: 0; padding: 140px 20px 60px; min-height: 100vh;">
+    <div style="margin: 0 auto; max-width: 900px;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 38px; font-weight: bold; color: #fff; font-family: 'Bebas Neue', sans-serif;">
+                FREQUENTLY ASKED QUESTIONS
+            </h1>
         </div>
 
-        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
-            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
-                Are the games region-locked?
-                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
-            </button>
-            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
-                <p style="margin: 0; line-height: 1.6;">
-                    Some games may be region-locked based on the publisher's restrictions. Check the product description for details on any regional limitations.
-                </p>
-            </div>
-        </div>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
-            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
-                What should I do if I encounter a technical issue with a game?
-                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
-            </button>
-            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
-                <p style="margin: 0; line-height: 1.6;">
-                    If you experience technical issues, please check our support page for troubleshooting guides. If the issue persists, you can reach out to our support team by submitting a ticket or emailing us directly.
-                </p>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
-            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
-                Can I play games offline?
-                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
-            </button>
-            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
-                <p style="margin: 0; line-height: 1.6;">
-                    Some games support offline play, while others may require an internet connection for activation or updates. Check the game's system requirements and product description for more details.
-                </p>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
-            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
-                Are there any age restrictions for purchasing games?
-                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
-            </button>
-            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
-                <p style="margin: 0; line-height: 1.6;">
-                    Some games may have age restrictions based on their content (such as Mature-rated games). You will need to be of the legal age in your country to purchase these games.
-                </p>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 15px; background-color: #222; border-radius: 8px; overflow: hidden;">
-            <button style="background-color: #333; color: white; cursor: pointer; padding: 15px 20px; text-align: left; border: none; width: 100%; font-size: 18px; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.3s ease;" onclick="toggleFAQ(this)">
-                Is my personal information safe?
-                <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
-            </button>
-            <div style="display: none; padding: 20px; background-color: #2a2a2a; color: #ccc;">
-                <p style="margin: 0; line-height: 1.6;">
-                    Yes! We take your privacy seriously. Your personal and payment information is securely processed through encrypted channels to ensure your data remains safe.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleFAQ(button) {
-            const panel = button.nextElementSibling;
-            const icon = button.querySelector('i');
-            
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-                button.style.backgroundColor = "#333";
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                panel.style.display = "block";
-                button.style.backgroundColor = "#444";
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
+            h2 {
+                font-size: 22px;
+                margin-bottom: 5px; /
+                
             }
-        }
-    </script>
-</div>
+            p {
+                font-size: 18px;
+                margin-bottom: 40px; 
+                margin-top: 5px; 
+            }
+        </style>
+
+        <h2>What is GamerStop?</h2>
+        <p>GamerStop is an online platform that offers exclusive gaming merchandise and a collection of free-to-play games for gamers worldwide.</p>
+
+        <h2>What can I find in the GamerStop store?</h2>
+        <p>Our store features exclusive gaming-related tech gadgets, apparel, and accessories inspired by popular games.</p>
+
+        <h2>What types of free games are available?</h2>
+        <p>We offer a curated selection of free-to-play games across different genres. These games can be accessed and played directly from our platform.</p>
+
+        <h2>How do I purchase items from the store?</h2>
+        <p>Simply browse the store, add items to your cart, and proceed to checkout. We accept multiple payment options for a secure shopping experience.</p>
+
+        <h2>Are the free games really free to play?</h2>
+        <p>Yes! All games in our "Games" section are free-to-play. Some may have optional in-game purchases, but you can play the base game at no cost.</p>
+
+        <h2>Do I need an account to use GamerStop?</h2>
+        <p>Yes, an account is required to purchase merchandise, access free games, and stay updated on new releases.</p>
+
+        <h2>How can I track my orders?</h2>
+        <p>Once your order is placed, you will receive an email with tracking details. You can also check your order status in your GamerStop account.</p>
+
+        <h2>What is GamerStop’s refund policy?</h2>
+        <p>We accept returns for unused physical merchandise within 30 days. Digital products and free games are non-refundable.</p>
+
+        <h2>How do I get support if I have an issue?</h2>
+        <p>If you need assistance, you can send us a message through your GamerStop account or check our FAQ page for common questions.</p>
+
+        <h2>Is GamerStop available worldwide?</h2>
+        <p>Yes! However, shipping for merchandise may be limited to certain regions, and some free games may have regional restrictions.</p>
+
+        <h2>How often are new free games added?</h2>
+        <p>We frequently update our game collection with new free-to-play titles. Check the "Games" section regularly for new additions.</p>
+
+        <h2>Do I need to download games to play them?</h2>
+        <p>Some games may require a download, while others can be played directly in your browser. Check the game’s description for details.</p>
+
+        <h2>Can I save my progress in free games?</h2>
+        <p>Yes, most games allow you to save progress, either through cloud saves or locally on your device. Some games may require an account for saving.</p>
+
+        <h2>Are there age restrictions for certain games?</h2>
+        <p>Yes, some games have age restrictions based on content. You must be of legal age in your country to access these games.</p>
+
+        <h2>Can I play GamerStop free games on any device?</h2>
+        <p>Most games are available on PC, but some may work on mobile or console. Check each game’s requirements before playing.</p>
+    </div>
+</section>
 {% endblock %}
