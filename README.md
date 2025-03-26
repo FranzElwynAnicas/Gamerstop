@@ -28,6 +28,18 @@ GamerStop is an **eCommerce platform** for gaming enthusiasts. It allows users t
 - **FreeToGame API** (Fetching Free Games Data)  
 - **Dialogflow API** (Chatbot)  
 
+ **Installation**  
+
+---
+
+## 🛠️ Installation & Setup (Run Locally)  
+
+### **1️⃣ Clone the Repository**
+### **2️⃣ Create a Virtual Environment**
+### **3️⃣ Install Dependencies**
+pip install -r requirements.txt
+
+ 
 ### **Libraries**  
 ```txt
 asgiref==3.8.1
@@ -41,7 +53,7 @@ sqlparse==0.5.3
 tzdata==2025.1
 urllib3==2.3.0
 
-### **Installation**  
+ **Installation**  
 
 ---
 
